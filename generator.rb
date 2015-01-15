@@ -9,7 +9,7 @@ class QRGenerator
     embed_img
     show_code
   end
-  
+
   private
 
   def generate_img
@@ -21,20 +21,20 @@ class QRGenerator
 
   def embed_img
     first_image  = MiniMagick::Image.new("./qr.jpg")
-    second_image = MiniMagick::Image.new("img/logo.jpg")
-    second_image.resize "100x20"
+    second_image = MiniMagick::Image.new("img/067d785.jpg")
+    second_image.resize "50x50"
     result = first_image.composite(second_image) do |c|
-      c.compose "Over"    
-      c.geometry "+100+140" 
+      c.compose "Over"
+      c.geometry "+120+140"
     end
     result.write "output.jpg"
   end
-  
+
   def get_input
     puts "please enter the url:"
     url = gets.chomp
   end
-  
+
   def show_code
     `open output.jpg`
   end
